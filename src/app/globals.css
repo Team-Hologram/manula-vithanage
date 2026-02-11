@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset ── */
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-luxury-alabaster text-luxury-graphite font-sans;
+  }
+
+  ::selection {
+    background-color: #C9B99A40;
+    color: #18181A;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2;
+    outline-color: #C9B99A;
+  }
+}
+
+/* ── Film Grain Overlay ── */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  animation: grain 8s steps(10) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain {
+    animation: none;
+    opacity: 0.015;
+  }
+}
+
+/* ── Scrollbar (luxury light) ── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F0E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4CFC3;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C9B99A;
+}
+
+/* ── Custom Cursor States ── */
+.cursor-view * {
+  cursor: none !important;
+}
+
+/* ── Hairline Divider ── */
+.hairline {
+  @apply h-px;
+  background-color: rgba(58, 58, 60, 0.08);
+}
+
+/* ── Masonry Grid ── */
+.masonry-grid {
+  columns: 1;
+  column-gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    columns: 3;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Placeholder image gradients ── */
+.placeholder-gradient-1 {
+  background: linear-gradient(135deg, #E8E4DA 0%, #D4CFC3 50%, #C9B99A 100%);
+}
+
+.placeholder-gradient-2 {
+  background: linear-gradient(135deg, #F3F0E8 0%, #E5D9C0 50%, #D4CFC3 100%);
+}
+
+.placeholder-gradient-3 {
+  background: linear-gradient(135deg, #C9B99A 0%, #B8A076 50%, #D4CFC3 100%);
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
