@@ -24,12 +24,11 @@ export default function AboutContent() {
                     <p className="text-[11px] tracking-[0.3em] uppercase text-luxury-champagne mb-3 font-sans">
                         About
                     </p>
-                    <RevealText
-                        as="h1"
+                    <h1
                         className="font-display text-headline text-luxury-graphite-deep"
                     >
                         The Artist Behind the Lens
-                    </RevealText>
+                    </h1>
                 </Container>
             </div>
 
